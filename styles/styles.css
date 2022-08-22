@@ -1,0 +1,43 @@
+.mainIcon {
+  font-size: 100px;
+}
+
+.textColor {
+  color: rgba(81, 170, 242, 0.965);
+  font-size: 25px;
+}
+
+.icons {
+  font-size: 40px;
+  text-align: left;
+}
+
+.otherIcons {
+  font-size: 24px;
+  color: black;
+}
+
+.nightTempValue {
+  font-size: 40px;
+  color: #85808e;
+}
+
+.mainTempValue {
+  font-size: 50px;
+}
+
+.container-md {
+  max-width: 777px;
+}
+
+.col {
+  text-align: center;
+}
+
+.doubleBorder {
+  border-style: double;
+}
+
+a {
+  cursor: pointer;
+}
