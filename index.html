@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>Weather</title>
+</head>
+
+<body>
+  <div class="container-md mt-2">
+    <div class="row g-2 justify-content-center">
+      <div class="col-md-8 pl-2 border rounded textColor"><span id="city">Vilnius, Lithuania</span>📍<span
+          id="currentDateTime">
+          <br>
+          Today, Wednesday <br> 27 July
+          <br>
+        </span>
+        <div class="row">
+          <div class="col-4  text-center">Morning
+            <br><span class="otherIcons">15°</span><br>
+            <span class="icons">🌤</span>
+          </div>
+          <div class="col-4 text-center">Day
+            <br><span class="otherIcons">19°</span><br>
+            <span class="icons">🌥</span>
+          </div>
+          <div class="col-4 text-center">Night
+            <br><span class="otherIcons">16°</span><br>
+            <span class="icons">🌧</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 border rounded">
+        <div class="row">
+          <div class="col-6">
+            <span class="mainIcon">⛅️</span>
+            <br><span id="main-temp" class="mainTempValue">°C</span><br><span class="nightTempValue"><a
+                id="celsium">°C</a>/<a id="farengeit">°F</a></span>
+          </div>
+          <div class="col-6"> <span class="otherIcons">💧 <span id="humidity">56%</span>
+              <br>
+              💨 <span id="wind">12</span>m/h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row border mt-2 rounded g-2 justify-content-center">
+      <div class="col">Thursday
+        <br>15°
+        <br>🌤
+      </div>
+      <div class="col"> Friday
+        <br>19°
+        <br>🌦
+      </div>
+      <div class="col">Saturday
+        <br>20°
+        <br>⛈
+      </div>
+      <div class="col">Sunday
+        <br>21°
+        <br>🌤
+      </div>
+      <div class="col">Monday
+        <br>21°
+        <br>🌤
+      </div>
+    </div>
+    <form id="search-form">
+      <div class="input-group mb-3 mt-2">
+        <input type="text" class="form-control" id="users-city" placeholder="Enter your city"
+          aria-label="Enter your city" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" type="submit">Search
+          </button>
+          <button id="currentButton" class="btn btn-outline-primary" type="button">Current
+          </button>
+        </div>
+      </div>
+    </form>
+
+
+    <script src="styles/src/code.js"></script>
+</body>
+
+</html>
