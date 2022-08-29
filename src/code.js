@@ -32,7 +32,7 @@ if(minutes < 10){
 let day = currentDate.getDate();
 let currentMonth = currentDate.getMonth();
 let infoAboutDateTime = document.querySelector('#currentDateTime');
-infoAboutDateTime.innerHTML = `<br> Today ${currentWeekDayName}, ${hours}:${minutes} <br> ${day} ${months[currentMonth]}`;
+infoAboutDateTime.innerHTML = `<br> Last update: ${currentWeekDayName}, ${hours}:${minutes} <br> ${day} ${months[currentMonth]}`;
 
 let currentCity;
 let currentTemp;
@@ -59,6 +59,8 @@ function showCity(response){
     document.querySelector('#wind').innerHTML = `${wind}`;
     let humidity = response.data.main.humidity;
     document.querySelector('#humidity').innerHTML = `${humidity}%`;
+    let description = response.data.weather[0].description;
+    document.querySelector('#weather-description').innerHTML = description;
 }
 function showTempCelcium(event){
     document.querySelector('#main-temp').innerHTML = `${currentTemp}°C`;

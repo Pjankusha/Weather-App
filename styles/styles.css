@@ -41,3 +41,6 @@
 a {
   cursor: pointer;
 }
+#weather-description{
+  text-transform: capitalize;
+}
