@@ -61,6 +61,12 @@ function showCity(response){
     document.querySelector('#humidity').innerHTML = `${humidity}%`;
     let description = response.data.weather[0].description;
     document.querySelector('#weather-description').innerHTML = description;
+    console.log(response.data);
+    let icon = document.querySelector('#main-icon');
+    let iconImg = response.data.weather[0].icon;
+    icon.setAttribute('src', `http://openweathermap.org/img/wn/${iconImg}@2x.png`);
+    console.log(iconImg);
+    
 }
 function showTempCelcium(event){
     document.querySelector('#main-temp').innerHTML = `${currentTemp}°C`;
