@@ -43,4 +43,11 @@ a {
 }
 #weather-description{
   text-transform: capitalize;
+  color: #1C3879;
+}
+#city{
+  color: #2B4865;
+}
+.update{
+  color: #2B4865;
 }

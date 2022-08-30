@@ -32,7 +32,7 @@ if(minutes < 10){
 let day = currentDate.getDate();
 let currentMonth = currentDate.getMonth();
 let infoAboutDateTime = document.querySelector('#currentDateTime');
-infoAboutDateTime.innerHTML = `<br> Last update: ${currentWeekDayName}, ${hours}:${minutes} <br> ${day} ${months[currentMonth]}`;
+infoAboutDateTime.innerHTML = `<br><span class="update"> Last update:</span> ${currentWeekDayName}, ${hours}:${minutes} <br> ${day} ${months[currentMonth]}`;
 
 let currentCity;
 let currentTemp;
