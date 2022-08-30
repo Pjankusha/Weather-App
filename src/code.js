@@ -43,6 +43,7 @@ function changeCity(e){
     e.preventDefault();
     let usersCity = document.querySelector('#users-city');
     let userCityValue = usersCity.value;
+    userCityValue = userCityValue.trim();
     let apiKey = '6323624f01fa63895cfaefb817b105ed';
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCityValue}&appid=${apiKey}&units=metric`
     axios.get(url).then(showCity);
