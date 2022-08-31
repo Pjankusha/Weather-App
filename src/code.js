@@ -47,6 +47,8 @@ function changeCity(e){
     let apiKey = '6323624f01fa63895cfaefb817b105ed';
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCityValue}&appid=${apiKey}&units=metric`
     axios.get(url).then(showCity);
+    usersCity.value = '';
+    
 }
 
 function showCity(response){
@@ -98,7 +100,6 @@ currentButton.addEventListener('click', showFirstCity);
 function showFirstCity(event){
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-
 
 
 
