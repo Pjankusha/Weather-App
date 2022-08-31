@@ -51,3 +51,13 @@ a {
 .update{
   color: #2B4865;
 }
+
+ .weather-frcst-day .weater-frcst-temp{
+  font-size: 19px;
+}
+.weather-frcst-icon{
+  font-size: 27px;
+}
+.weather-frcst-mintemp{
+  opacity: 0.6;
+}
