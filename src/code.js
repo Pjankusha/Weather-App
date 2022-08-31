@@ -67,9 +67,9 @@ function showCity(response){
     console.log(response.data);
     let icon = document.querySelector('#main-icon');
     let iconImg = response.data.weather[0].icon;
-    //icon.setAttribute('src', `http://openweathermap.org/img/wn/${iconImg}@2x.png`);
+    //icon.setAttribute('src', `https://openweathermap.org/img/wn/${iconImg}@2x.png`);
     //console.log(iconImg);
-    icon.innerHTML = `<img src='http://openweathermap.org/img/wn/${iconImg}@2x.png'>`;
+    icon.innerHTML = `<img src='https://openweathermap.org/img/wn/${iconImg}@2x.png'>`;
     
 }
 function showTempCelcium(event){
