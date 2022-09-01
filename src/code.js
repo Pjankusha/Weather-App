@@ -100,8 +100,32 @@ currentButton.addEventListener('click', showFirstCity);
 function showFirstCity(event){
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-
-
+function showFrcst(){
+  let days = ['Friday', 'Saturday', 'Sunday','Monday', 'Thuesday'];
+  let frcst = document.querySelector('#forecast');
+  let frcstHTML = '';
+  days.forEach(function(day){
+frcstHTML = frcstHTML + `<div class="col" id="weather-frcst">
+        <div class="weather-frcst-day">
+          ${day}
+        </div>
+        <div class="weater-frcst-temp">
+          <span class="weathr-frcst-tempmax">
+            15°
+          </span>
+          <span class="weather-frcst-mintemp">
+            14°
+          </span>
+        </div>
+        <div class="weather-frcst-icon">
+          🌤
+        </div>
+      </div>`;
+        frcst.innerHTML = frcstHTML;
+  })
+  
+}
+showFrcst();
 
 
 
