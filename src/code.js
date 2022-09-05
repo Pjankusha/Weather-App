@@ -50,14 +50,7 @@ function changeCity(e){
     usersCity.value = '';
     
 }
-function getFrcst(coords){
-  console.log(coords);
-  let apiKey = 'c95d60a1e3adbeb286133f1ebebc2579';
-  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${apiKey}`;
-  console.log(apiURL);
-  
 
-}
 function showCity(response){
     let city = response.data.name;
     console.log(city);
@@ -108,25 +101,36 @@ currentButton.addEventListener('click', showFirstCity);
 function showFirstCity(event){
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-function showFrcst(){
+
+function getFrcst(coords){
+  console.log(coords);
+  let apiKey = 'c95d60a1e3adbeb286133f1ebebc2579';
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${apiKey}`;
+  console.log(apiURL);
+  axios.get(apiURL).then(showFrcst);
+}
+
+function showFrcst(response){
+  let frcstApiArray = response.data.daily;
+  console.log(response.data.daily);
   let days = ['Friday', 'Saturday', 'Sunday','Monday', 'Thuesday'];
   let frcst = document.querySelector('#forecast');
   let frcstHTML = '';
-  days.forEach(function(day){
+  frcstApiArray.forEach(function(frcstDay){
 frcstHTML = frcstHTML + `<div class="col" id="weather-frcst">
         <div class="weather-frcst-day">
-          ${day}
+          ${frcstDay.dt}
         </div>
         <div class="weater-frcst-temp">
           <span class="weathr-frcst-tempmax">
-            15°
+            ${Math.round(frcstDay.temp.max)}°
           </span>
           <span class="weather-frcst-mintemp">
-            14°
+            ${Math.round(frcstDay.temp.min)}°
           </span>
         </div>
         <div class="weather-frcst-icon">
-          🌤
+         <img src='https://openweathermap.org/img/wn/${frcstDay.weather[0].icon}@2x.png'>
         </div>
       </div>`;
         frcst.innerHTML = frcstHTML;
