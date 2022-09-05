@@ -53,7 +53,7 @@ function changeCity(e){
 function getFrcst(coords){
   console.log(coords);
   let apiKey = 'c95d60a1e3adbeb286133f1ebebc2579';
-  let apiURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${apiKey}`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${apiKey}`;
   console.log(apiURL);
   
 
