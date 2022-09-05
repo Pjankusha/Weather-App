@@ -50,7 +50,14 @@ function changeCity(e){
     usersCity.value = '';
     
 }
+function getFrcst(coords){
+  console.log(coords);
+  let apiKey = 'c95d60a1e3adbeb286133f1ebebc2579';
+  let apiURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${apiKey}`;
+  console.log(apiURL);
+  
 
+}
 function showCity(response){
     let city = response.data.name;
     console.log(city);
@@ -70,6 +77,7 @@ function showCity(response){
     //icon.setAttribute('src', `https://openweathermap.org/img/wn/${iconImg}@2x.png`);
     //console.log(iconImg);
     icon.innerHTML = `<img src='https://openweathermap.org/img/wn/${iconImg}@2x.png'>`;
+    getFrcst(response.data.coord);
     
 }
 function showTempCelcium(event){
