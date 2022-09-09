@@ -40,8 +40,9 @@ let currentTemp;
 let maxTempFrcst = [];
 let minTempFrcst= [];
 
+
 let mornTemperature;
-let dayTeperture;
+let dayTemperture;
 let nightTemperature;
 
 let form = document.querySelector('#search-form');
@@ -55,10 +56,14 @@ function changeCity(e){
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCityValue}&appid=${apiKey}&units=metric`
     axios.get(url).then(showCity);
     usersCity.value = '';
-    
 }
 
 function showCity(response){
+    maxTempFrcst = [];
+    minTempFrcst= [];
+    mornTemperature = 0;
+    dayTemperture = 0;
+    nightTemperature =0;
     let city = response.data.name;
     console.log(city);
     document.querySelector('#city').innerHTML = `${city}`;
@@ -78,31 +83,51 @@ function showCity(response){
     //console.log(iconImg);
     icon.innerHTML = `<img src='https://openweathermap.org/img/wn/${iconImg}@2x.png'>`;
     getFrcst(response.data.coord);
+
     
 }
 function showTempCelcium(valueOfTemp){
     document.querySelector('#main-temp').innerHTML = `${currentTemp}°C`;
-    
+    let frcstId = 0;
+    maxTempFrcst.forEach(function(temp){
+        frcstId+=1;
+        document.getElementById(`tempmax${frcstId}`).innerHTML = `${temp}°`;
+    });
+    frcstId = 0;
+    minTempFrcst.forEach(function(temp){
+        frcstId+=1;
+        document.getElementById(`tempmin${frcstId}`).innerHTML = `${temp}°`;
+    });
+    document.getElementById('morningTemp').innerHTML = `${mornTemperature}°`;
+    document.getElementById('dayTemp').innerHTML = `${dayTemperture}°`;
+    document.getElementById('nightTemp').innerHTML = `${nightTemperature}°`;
 }
+
+
 
 function showFaren(max, min){
     let farengeitFormula = currentTemp * 1.8 + 32;
     farengeitFormula = Math.round(farengeitFormula);
     document.querySelector('#main-temp').innerHTML = `${farengeitFormula}°F`;
     let idFrcst = 0;
-    let idFrcstmin = 0;
     maxTempFrcst.forEach(function(nums){
       let far = nums * 1.8 + 32;
       idFrcst+=1;
       document.getElementById(`tempmax${idFrcst}`).innerHTML = `${Math.round(far)}°`;
     });
+    idFrcst = 0;
     minTempFrcst.forEach(function(nums){
       let far = nums * 1.8 + 32;
-      idFrcstmin+=1;
-      document.getElementById(`tempmin${idFrcstmin}`).innerHTML = `${Math.round(far)}°`;
+      idFrcst+=1;
+      document.getElementById(`tempmin${idFrcst}`).innerHTML = `${Math.round(far)}°`;
     });
+    let mornTemp = Math.round(mornTemperature * 1.8 +32);
+    document.getElementById('morningTemp').innerHTML = `${mornTemp}°`;
+    let dayTemp = Math.round(dayTemperture * 1.8 +32);
+    document.getElementById('dayTemp').innerHTML = `${dayTemp}°`;
+    let nghtTemp = Math.round(nightTemperature * 1.8 +32);
+    document.getElementById('nightTemp').innerHTML = `${nghtTemp}°`;
 }
-
 let celsium = document.querySelector('#celsium');  
 celsium.addEventListener('click', showTempCelcium);
 let farengeit = document.querySelector('#farengeit');
@@ -122,7 +147,6 @@ currentButton.addEventListener('click', showFirstCity);
 function showFirstCity(event){
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-
 function getFrcst(coords){
   console.log(coords);
   let apiKey = '0fbf741dd6f046088a411342ceb1813f';
@@ -138,7 +162,6 @@ function setForecastDate(days){
   return weekDaysNames[day];
 
 };
-
 function showFrcst(response){
   let frcstApiArray = response.data.daily;
   let frcst = document.querySelector('#forecast');
@@ -171,11 +194,8 @@ function showFrcst(response){
         minTempFrcst.push(minTempF);
         console.log(minTempFrcst);
 
-
-
-
         mornTemperature = Math.round(frcstDay.temp.morn);
-        dayTeperture = Math.round(frcstDay.temp.day);
+        dayTemperture = Math.round(frcstDay.temp.day);
         nightTemperature = Math.round(frcstDay.temp.night);
         
         let morningTemp = document.getElementById('morningTemp');
@@ -202,8 +222,6 @@ function showHourlyIcon(response){
       console.log(setForecastDate(hourlyData.dt));     
    });      
 };
-
-
 showFrcst();
 showHourlyIcon();
 
